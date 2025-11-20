@@ -24,8 +24,9 @@ The [Template mod](/programs/tni-mod-template) is a template that contains the c
 
 Mods in the game will be loaded from the user's game directory in alphabetical order.
 
-Windows: `%APPDATA%\Godot\app_userdata\Tower Networking Inc`
-Linux: `~/.local/share/godot/app_userdata/Tower Networking Inc`
+- Windows: `%APPDATA%\Godot\app_userdata\Tower Networking Inc`
+
+- Linux: `~/.local/share/godot/app_userdata/Tower Networking Inc`
 
 On the user's game directory, you'll observe directories like `saves/` and `logs/`. Place your mod in the `mods/` directory.
 
