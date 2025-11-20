@@ -43,6 +43,12 @@ The engine will always first try to load the `luajit.elf` before all mods, so yo
 
 Check out the [docs](https://libriscv.no/docs/host_langs/godot_integration/godot_docs/cmake#cmake-setup) on librisc-v for more information
 
+You should initialize the submodules first
+
+```sh
+git submodule update --init --recursive
+```
+
 ### Windows
 
 Make sure the following is installed:
