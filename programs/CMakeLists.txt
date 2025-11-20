@@ -18,6 +18,7 @@ endfunction()
 
 # Build the trivial examples
 add_subdirectory(tni-mod-template)
+add_subdirectory(luajit)
 
 # Build the examples that require full Linux/C++ support
 if (NOT EMBEDDED_RISCV)

@@ -8,13 +8,17 @@ Note that modding for the game is still in early design/implementation stage, an
 
 Examples are your friend. To get started, take a look at the following examples:
 
-### Template mod
+### Template mod (C/C++)
 
 The [Template mod](/programs/tni-mod-template) is a template that contains the common use scenario for writing a mod.
 
-## Building mods
+### Lua
 
-Check out the (docs)[https://libriscv.no/docs/host_langs/godot_integration/godot_docs/cmake#cmake-setup] on librisc-v for more information
+If you'd like to write and run lua mods, you'd need to add the `luajit` mod first, which allows you to then load `.lua` files in the same manner.
+
+## Building mods (C/C++)
+
+Check out the [docs](https://libriscv.no/docs/host_langs/godot_integration/godot_docs/cmake#cmake-setup) on librisc-v for more information
 
 ### Windows
 
@@ -34,7 +38,7 @@ The built output (a .elf file) will be in the `.zig/<name-of-your-mod>/entry.elf
 
 ## Loading the mod
 
-Mods in the game will be loaded from the user's game directory.
+Mods in the game will be loaded from the user's game directory in alphabetical order.
 
 Windows: `%APPDATA%\Godot\app_userdata\Tower Networking Inc`
 Linux: `~/.local/share/godot/app_userdata/Tower Networking Inc`
@@ -43,4 +47,8 @@ On the user's game directory, you'll observe directories like `saves/` and `logs
 
 For example, to install the `tni-mod-template` mod, place `.zig/tni-mod-template` to `mods/` such that `mods/tni-mod-template/entry.elf` exists.
 
-Mods are loaded/run in alphabetical ordering.
+### Lua mods
+
+If you'd like to use Lua instead, you can download the pre-built luajit.elf mod from the releases section and place it as `mods/luajit.elf` (directly in the `mods/`) directory. This enables loading of `.lua` mods.
+
+The engine will always first try to load the `luajit.elf` before all mods, so you do not need to worry about the naming.

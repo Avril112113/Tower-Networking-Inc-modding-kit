@@ -8,8 +8,6 @@ TNI modding template
 https://libriscv.no/docs/host_langs/godot_integration/godot_docs/cppexamples/
 https://libriscv.no/docs/host_langs/godot_integration/godot_docs/cppapi
 
-none of the functions here should be void functions. they should all return a Variant (use Nil for no return value)
-
 */
 
 static int somevar = 0;
@@ -55,7 +53,7 @@ static Variant on_player_input(Object modding_api, InputEvent event) {
 	return Nil;
 }
 
-static Variant on_game_load(Object modding_api) {
+static Variant on_game_state_ready(Object modding_api) {
 	// this is called when the game is ready.
     Node gw(modding_api.call("get_game_world"));
     String scenario_name = gw.get("scenario_name");
@@ -63,12 +61,24 @@ static Variant on_game_load(Object modding_api) {
 	return Nil;
 }
 
+static Variant on_game_host_eod(Object modding_api) {
+	// this is called when the game host's end-of-day occurs.
+	return Nil;
+}
+
+static Variant on_device_spawned(Object modding_api, Node device) {
+	// this is called when a device is spawned.
+	return Nil;
+}
+
 int main() {
 	// implement the following functions if you want to modify the game states
 	ADD_API_FUNCTION(on_engine_load, "", "", "Called when the mod is just loaded");
-	ADD_API_FUNCTION(on_game_load, "", "", "Called when the game is ready");
+	ADD_API_FUNCTION(on_game_state_ready, "", "", "Called when the game is ready");
+	ADD_API_FUNCTION(on_game_host_eod, "", "", "Called when the end-of-day occurs on the host");
 	ADD_API_FUNCTION(on_game_tick, "", "", "Called every game tick");
 	ADD_API_FUNCTION(on_player_input, "", "", "Called when player input");
+	ADD_API_FUNCTION(on_device_spawned, "", "", "Called when device spawned");
 
 	halt();
 }

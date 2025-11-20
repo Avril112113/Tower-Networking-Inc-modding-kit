@@ -1,0 +1,144 @@
+#include <api.hpp>
+#include <cstring>
+extern "C" {
+#include <lauxlib.h>
+#include <lua.h>
+#include <lualib.h>
+}
+
+static lua_State *L;
+static constexpr bool VERBOSE = false;
+
+static int api_print(lua_State *L) {
+	const char *text = luaL_checkstring(L, 1);
+	printf("%s", text);
+	fflush(stdout);
+	return 0;
+}
+
+static Variant set_lua_source(String code) {
+    const std::string utf = code.utf8();
+    if (luaL_loadbuffer(L, utf.c_str(), utf.size(), "@code") != 0) {
+        const char *err = lua_tostring(L, -1);
+        printf("Lua load error: %s\n", err);
+        lua_pop(L, 1);
+        return Nil;
+    }
+    
+    if (lua_pcall(L, 0, 0, 0) != 0) {
+        const char *err = lua_tostring(L, -1);
+        printf("Lua exec error: %s\n", err);
+        lua_pop(L, 1);
+        return Nil;
+    }
+    
+    return Nil;
+}
+
+void add_object_to_lua(const char *name, Variant obj) {
+    struct ObjWrap { Variant obj; };
+    ObjWrap *w = new ObjWrap;
+    w->obj = obj;
+    w->obj.make_permanent();
+    
+    lua_newuserdata(L, sizeof(void*));
+    *(void**)lua_touserdata(L, -1) = w;
+    lua_newtable(L);
+    
+    lua_pushstring(L, "__index");
+    lua_pushlightuserdata(L, w);
+    lua_pushcclosure(L, [](lua_State *L) -> int {
+        ObjWrap *w = (ObjWrap*)lua_touserdata(L, lua_upvalueindex(1));
+        const char *method = luaL_checkstring(L, 2);
+        
+        lua_pushlightuserdata(L, w);
+        lua_pushstring(L, method);
+        lua_pushcclosure(L, [](lua_State *L) -> int {
+            ObjWrap *w = (ObjWrap*)lua_touserdata(L, lua_upvalueindex(1));
+            const char *m = lua_tostring(L, lua_upvalueindex(2));
+            
+            std::array<Variant, 8> args;
+            size_t n = 0;
+            for (int i = 1; i <= lua_gettop(L) && n < 8; i++) {
+                switch (lua_type(L, i)) {
+                    case LUA_TBOOLEAN: args[n++] = bool(lua_toboolean(L, i)); break;
+                    case LUA_TNUMBER: args[n++] = double(lua_tonumber(L, i)); break;
+                    case LUA_TSTRING: args[n++] = lua_tostring(L, i); break;
+                }
+            }
+            
+            Variant res = n == 0 ? w->obj(m) :
+                         n == 1 ? w->obj(m, args[0]) :
+                         n == 2 ? w->obj(m, args[0], args[1]) :
+                         n == 3 ? w->obj(m, args[0], args[1], args[2]) :
+                                 w->obj(m, args[0], args[1], args[2], args[3]);
+            
+            switch (res.get_type()) {
+                case Variant::Type::BOOL: lua_pushboolean(L, res); return 1;
+                case Variant::Type::INT:
+                case Variant::Type::FLOAT: lua_pushnumber(L, res); return 1;
+                case Variant::Type::STRING: 
+                    lua_pushstring(L, res.as_std_string().c_str()); return 1;
+                default: return 0;
+            }
+        }, 2);
+        return 1;
+    }, 1);
+    lua_settable(L, -3);
+    
+    lua_setmetatable(L, -2);
+    lua_setglobal(L, name);
+}
+
+#define DEFINE_LUA_CALLBACK_0(name) \
+    static Variant name(Object modding_api) { \
+		lua_getglobal(L, #name); \
+		if (!lua_isfunction(L, -1)) { \
+			lua_pop(L, 1); \
+			return Nil; \
+		} \
+		add_object_to_lua("_temp_api", modding_api); \
+		lua_getglobal(L, "_temp_api"); \
+		lua_pcall(L, 1, 0, 0); \
+    	return Nil; \
+    }
+
+#define DEFINE_LUA_CALLBACK_1(name, type1, param1) \
+    static Variant name(Object modding_api, type1 param1) { \
+        lua_getglobal(L, #name); \
+        if (!lua_isfunction(L, -1)) { \
+            lua_pop(L, 1); \
+            return Nil; \
+        } \
+        add_object_to_lua("_temp_api", modding_api); \
+        lua_getglobal(L, "_temp_api"); \
+        add_object_to_lua("_temp_" #param1, param1); \
+        lua_getglobal(L, "_temp_" #param1); \
+        lua_pcall(L, 2, 0, 0); \
+        return Nil; \
+    }
+
+DEFINE_LUA_CALLBACK_0(on_engine_load)
+DEFINE_LUA_CALLBACK_0(on_game_state_ready)
+DEFINE_LUA_CALLBACK_0(on_game_host_eod)
+
+DEFINE_LUA_CALLBACK_1(on_game_tick, double, delta)
+DEFINE_LUA_CALLBACK_1(on_player_input, InputEvent, event)
+DEFINE_LUA_CALLBACK_1(on_device_spawned, Node, device)
+
+int main() {
+    L = luaL_newstate();
+    luaL_openlibs(L);
+    
+    lua_register(L, "print", api_print);
+    
+    ADD_API_FUNCTION(set_lua_source, "", "");
+    ADD_API_FUNCTION(on_engine_load, "", "", "");
+    ADD_API_FUNCTION(on_game_state_ready, "", "", "");
+    ADD_API_FUNCTION(on_game_host_eod, "", "", "");
+    ADD_API_FUNCTION(on_game_tick, "", "", "");
+    ADD_API_FUNCTION(on_player_input, "", "", "");
+    ADD_API_FUNCTION(on_device_spawned, "", "", "");
+    
+    halt();
+}
