@@ -4,6 +4,10 @@ This repository is a modding kit that can be used to create mods for the game [T
 
 Note that modding for the game is still in early design/implementation stage, and any feedback/suggestions is encouraged to make modding the game fun!
 
+## BETA
+
+Checkout the beta branch, which has improved modding support and is now usable with the beta build of the game on steam.
+
 ## Example mods
 
 Examples are your friend. To get started, take a look at the following examples:
