@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_POWERMETERFIRMWARE
 #define TNI_API_HEADER_POWERMETERFIRMWARE
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.0
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <api.hpp>
@@ -37,7 +37,7 @@ struct PowerMeterFirmware : public Node {
 	inline void stop();
 	inline void uninstall();
 	inline void install(Variant _install_opts);
-	inline void process_network_packet(PacketControlModule pktctl, Variant packet);
+	inline bool process_network_packet(PacketControlModule pktctl, Variant packet);
 };
 
 #include "LogicController.hpp"
@@ -49,6 +49,6 @@ inline void PowerMeterFirmware::start() { voidcall("start"); }
 inline void PowerMeterFirmware::stop() { voidcall("stop"); }
 inline void PowerMeterFirmware::uninstall() { voidcall("uninstall"); }
 inline void PowerMeterFirmware::install(Variant _install_opts) { voidcall("install", _install_opts); }
-inline void PowerMeterFirmware::process_network_packet(PacketControlModule pktctl, Variant packet) { voidcall("process_network_packet", pktctl, packet); }
+inline bool PowerMeterFirmware::process_network_packet(PacketControlModule pktctl, Variant packet) { return operator()("process_network_packet", pktctl, packet); }
 
 #endif

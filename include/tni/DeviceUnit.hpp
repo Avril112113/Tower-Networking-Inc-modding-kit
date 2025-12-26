@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_DEVICEUNIT
 #define TNI_API_HEADER_DEVICEUNIT
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.0
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <api.hpp>
@@ -54,7 +54,7 @@ struct DeviceUnit : public RigidBody2D {
 		NA = 0,
 		R500 = 1,
 		R930 = 2,
-		R550 = 3,
+		R630 = 3,
 	};
 
 	PROPERTY(product_name, String);

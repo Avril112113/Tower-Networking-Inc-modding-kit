@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_WORMBASE
 #define TNI_API_HEADER_WORMBASE
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.0
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <api.hpp>
@@ -38,6 +38,8 @@ struct WormBase : public Node {
 	PROPERTY(is_running, bool);
 	PROPERTY(host_controller, LogicController);
 
+	inline NetworkPacketRoot make_packet_root();
+	inline Variant make_traversal_packet(NetworkPacketRoot proot);
 	inline bool check_routability(LogicController from_node, LogicControllerSocket via_port, TraversalContext context);
 	inline Variant check_filter_passage(LogicController next_node, TraversalContext context);
 	inline bool check_traversibility(TraversalContext context, LogicController from_node, Variant via_port, Variant current_depth);
@@ -48,14 +50,17 @@ struct WormBase : public Node {
 	inline void stop();
 	inline void uninstall();
 	inline void install(Variant _install_opts);
-	inline void process_network_packet(PacketControlModule pktctl, Variant packet);
+	inline bool process_network_packet(PacketControlModule pktctl, Variant packet);
 };
 
 #include "LogicController.hpp"
+#include "NetworkPacketRoot.hpp"
 #include "LogicControllerSocket.hpp"
 #include "TraversalContext.hpp"
 #include "PacketControlModule.hpp"
 
+inline NetworkPacketRoot WormBase::make_packet_root() { return NetworkPacketRoot(operator()("make_packet_root").as_object().address()); }
+inline Variant WormBase::make_traversal_packet(NetworkPacketRoot proot) { return operator()("make_traversal_packet", proot); }
 inline bool WormBase::check_routability(LogicController from_node, LogicControllerSocket via_port, TraversalContext context) { return operator()("check_routability", from_node, via_port, context); }
 inline Variant WormBase::check_filter_passage(LogicController next_node, TraversalContext context) { return operator()("check_filter_passage", next_node, context); }
 inline bool WormBase::check_traversibility(TraversalContext context, LogicController from_node, Variant via_port, Variant current_depth) { return operator()("check_traversibility", context, from_node, via_port, current_depth); }
@@ -66,6 +71,6 @@ inline void WormBase::start() { voidcall("start"); }
 inline void WormBase::stop() { voidcall("stop"); }
 inline void WormBase::uninstall() { voidcall("uninstall"); }
 inline void WormBase::install(Variant _install_opts) { voidcall("install", _install_opts); }
-inline void WormBase::process_network_packet(PacketControlModule pktctl, Variant packet) { voidcall("process_network_packet", pktctl, packet); }
+inline bool WormBase::process_network_packet(PacketControlModule pktctl, Variant packet) { return operator()("process_network_packet", pktctl, packet); }
 
 #endif

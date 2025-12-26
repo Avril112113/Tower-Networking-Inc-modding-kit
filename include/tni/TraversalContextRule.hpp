@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_TRAVERSALCONTEXTRULE
 #define TNI_API_HEADER_TRAVERSALCONTEXTRULE
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.0
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <api.hpp>
@@ -27,10 +27,12 @@ struct TraversalContextRule : public RefCounted {
 	PROPERTY(traffic_class_s, String);
 
 	inline bool is_matched(TraversalContext context);
+	inline bool is_packet_matched(Variant packet);
 };
 
 #include "TraversalContext.hpp"
 
 inline bool TraversalContextRule::is_matched(TraversalContext context) { return operator()("is_matched", context); }
+inline bool TraversalContextRule::is_packet_matched(Variant packet) { return operator()("is_packet_matched", packet); }
 
 #endif

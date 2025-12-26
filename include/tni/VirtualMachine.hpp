@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_VIRTUALMACHINE
 #define TNI_API_HEADER_VIRTUALMACHINE
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.0
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <api.hpp>
@@ -49,7 +49,7 @@ struct VirtualMachine : public Node {
 	inline Variant serialize_as_str();
 	inline Variant deserialize_from_str(int64_t sz, String fdats, LogicController target_controller);
 	inline String colorize_description(String ds);
-	inline void process_network_packet(PacketControlModule pktctl, Variant packet);
+	inline bool process_network_packet(PacketControlModule pktctl, Variant packet);
 };
 
 #include "LogicController.hpp"
@@ -68,6 +68,6 @@ inline void VirtualMachine::tick() { voidcall("tick"); }
 inline Variant VirtualMachine::serialize_as_str() { return operator()("serialize_as_str"); }
 inline Variant VirtualMachine::deserialize_from_str(int64_t sz, String fdats, LogicController target_controller) { return operator()("deserialize_from_str", sz, fdats, target_controller); }
 inline String VirtualMachine::colorize_description(String ds) { return operator()("colorize_description", ds); }
-inline void VirtualMachine::process_network_packet(PacketControlModule pktctl, Variant packet) { voidcall("process_network_packet", pktctl, packet); }
+inline bool VirtualMachine::process_network_packet(PacketControlModule pktctl, Variant packet) { return operator()("process_network_packet", pktctl, packet); }
 
 #endif

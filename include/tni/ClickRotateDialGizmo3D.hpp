@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_CLICKROTATEDIALGIZMO3D
 #define TNI_API_HEADER_CLICKROTATEDIALGIZMO3D
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.0
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <api.hpp>

@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_LOGICCONTROLLERUSER
 #define TNI_API_HEADER_LOGICCONTROLLERUSER
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.0
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <api.hpp>
@@ -21,6 +21,8 @@ struct LogicControllerUser : public Node {
 
 	PROPERTY(logic_controller, LogicController);
 	PROPERTY(behaviors, Variant);
+	PROPERTY(hosting_behaviors, Variant);
+	PROPERTY(public_client_behaviors, Variant);
 	PROPERTY(user_application_unlocks, Variant);
 	PROPERTY(consumption_payment_scaling, double);
 	PROPERTY(allow_hwreset, bool);
@@ -78,8 +80,8 @@ struct LogicControllerUser : public Node {
 	inline Variant debug_monitor_callback();
 	inline void account_intent(UserTraversal utc);
 	inline void unaccount_intent(UserTraversal utc);
-	inline void account_consumption(UserTraversal utc, TraversalContext _context);
-	inline void account_visitation(Program vprog, TraversalContext context, LogicControllerUser _visitor);
+	inline void account_consumption(UserTraversal utc, Variant _ctx_or_pkt);
+	inline void account_visitation(Program vprog, Variant ctx_or_pkt, LogicControllerUser _visitor);
 	inline void time_mult_updated(double time_mult_delta);
 	inline void finish_setup();
 	inline void first_use();
@@ -90,7 +92,6 @@ struct LogicControllerUser : public Node {
 #include "LogicController.hpp"
 #include "Location.hpp"
 #include "UserTraversal.hpp"
-#include "TraversalContext.hpp"
 #include "Program.hpp"
 #include "LogicControllerUser.hpp"
 
@@ -99,8 +100,8 @@ inline double LogicControllerUser::get_manifest_roll(String release_name) { retu
 inline Variant LogicControllerUser::debug_monitor_callback() { return operator()("debug_monitor_callback"); }
 inline void LogicControllerUser::account_intent(UserTraversal utc) { voidcall("account_intent", utc); }
 inline void LogicControllerUser::unaccount_intent(UserTraversal utc) { voidcall("unaccount_intent", utc); }
-inline void LogicControllerUser::account_consumption(UserTraversal utc, TraversalContext _context) { voidcall("account_consumption", utc, _context); }
-inline void LogicControllerUser::account_visitation(Program vprog, TraversalContext context, LogicControllerUser _visitor) { voidcall("account_visitation", vprog, context, _visitor); }
+inline void LogicControllerUser::account_consumption(UserTraversal utc, Variant _ctx_or_pkt) { voidcall("account_consumption", utc, _ctx_or_pkt); }
+inline void LogicControllerUser::account_visitation(Program vprog, Variant ctx_or_pkt, LogicControllerUser _visitor) { voidcall("account_visitation", vprog, ctx_or_pkt, _visitor); }
 inline void LogicControllerUser::time_mult_updated(double time_mult_delta) { voidcall("time_mult_updated", time_mult_delta); }
 inline void LogicControllerUser::finish_setup() { voidcall("finish_setup"); }
 inline void LogicControllerUser::first_use() { voidcall("first_use"); }

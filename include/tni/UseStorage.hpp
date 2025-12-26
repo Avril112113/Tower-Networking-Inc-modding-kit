@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_USESTORAGE
 #define TNI_API_HEADER_USESTORAGE
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.0
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <api.hpp>
@@ -39,7 +39,7 @@ struct UseStorage : public Node {
 	inline void stop();
 	inline void uninstall();
 	inline void install(Variant _install_opts);
-	inline void process_network_packet(PacketControlModule pktctl, Variant packet);
+	inline bool process_network_packet(PacketControlModule pktctl, Variant packet);
 };
 
 #include "UseConfig.hpp"
@@ -52,6 +52,6 @@ inline void UseStorage::start() { voidcall("start"); }
 inline void UseStorage::stop() { voidcall("stop"); }
 inline void UseStorage::uninstall() { voidcall("uninstall"); }
 inline void UseStorage::install(Variant _install_opts) { voidcall("install", _install_opts); }
-inline void UseStorage::process_network_packet(PacketControlModule pktctl, Variant packet) { voidcall("process_network_packet", pktctl, packet); }
+inline bool UseStorage::process_network_packet(PacketControlModule pktctl, Variant packet) { return operator()("process_network_packet", pktctl, packet); }
 
 #endif

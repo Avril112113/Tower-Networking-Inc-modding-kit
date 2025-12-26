@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_USERTRAVERSALFQDN
 #define TNI_API_HEADER_USERTRAVERSALFQDN
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.0
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <api.hpp>
@@ -65,6 +65,7 @@ struct UserTraversalFQDN : public Node {
 	PROPERTY(is_running, bool);
 	PROPERTY(host_controller, LogicController);
 
+	inline Variant make_traversal_packet(NetworkPacketRoot proot);
 	inline void tick();
 	inline void add_surveyor_msg(String msg);
 	inline Variant get_compatible_hostings();
@@ -72,6 +73,7 @@ struct UserTraversalFQDN : public Node {
 	inline void select_host_from_hostings(Variant acceptable_candidates, int64_t selection_method);
 	inline Variant produce_limit_reached(LogicController node);
 	inline Variant compute_produce_limit(LogicController node);
+	inline NetworkPacketRoot make_packet_root();
 	inline bool check_routability(LogicController from_node, LogicControllerSocket via_port, TraversalContext context);
 	inline Variant check_filter_passage(LogicController next_node, TraversalContext context);
 	inline bool check_traversibility(TraversalContext context, LogicController from_node, Variant via_port, Variant current_depth);
@@ -81,17 +83,19 @@ struct UserTraversalFQDN : public Node {
 	inline void stop();
 	inline void uninstall();
 	inline void install(Variant _install_opts);
-	inline void process_network_packet(PacketControlModule pktctl, Variant packet);
+	inline bool process_network_packet(PacketControlModule pktctl, Variant packet);
 };
 
 #include "LogicControllerUser.hpp"
 #include "ThemeConfig.hpp"
 #include "UseConfig.hpp"
 #include "LogicController.hpp"
+#include "NetworkPacketRoot.hpp"
 #include "LogicControllerSocket.hpp"
 #include "TraversalContext.hpp"
 #include "PacketControlModule.hpp"
 
+inline Variant UserTraversalFQDN::make_traversal_packet(NetworkPacketRoot proot) { return operator()("make_traversal_packet", proot); }
 inline void UserTraversalFQDN::tick() { voidcall("tick"); }
 inline void UserTraversalFQDN::add_surveyor_msg(String msg) { voidcall("add_surveyor_msg", msg); }
 inline Variant UserTraversalFQDN::get_compatible_hostings() { return operator()("get_compatible_hostings"); }
@@ -99,6 +103,7 @@ inline Variant UserTraversalFQDN::filter_acceptable_hostings(Variant initial_can
 inline void UserTraversalFQDN::select_host_from_hostings(Variant acceptable_candidates, int64_t selection_method) { voidcall("select_host_from_hostings", acceptable_candidates, selection_method); }
 inline Variant UserTraversalFQDN::produce_limit_reached(LogicController node) { return operator()("produce_limit_reached", node); }
 inline Variant UserTraversalFQDN::compute_produce_limit(LogicController node) { return operator()("compute_produce_limit", node); }
+inline NetworkPacketRoot UserTraversalFQDN::make_packet_root() { return NetworkPacketRoot(operator()("make_packet_root").as_object().address()); }
 inline bool UserTraversalFQDN::check_routability(LogicController from_node, LogicControllerSocket via_port, TraversalContext context) { return operator()("check_routability", from_node, via_port, context); }
 inline Variant UserTraversalFQDN::check_filter_passage(LogicController next_node, TraversalContext context) { return operator()("check_filter_passage", next_node, context); }
 inline bool UserTraversalFQDN::check_traversibility(TraversalContext context, LogicController from_node, Variant via_port, Variant current_depth) { return operator()("check_traversibility", context, from_node, via_port, current_depth); }
@@ -108,6 +113,6 @@ inline void UserTraversalFQDN::start() { voidcall("start"); }
 inline void UserTraversalFQDN::stop() { voidcall("stop"); }
 inline void UserTraversalFQDN::uninstall() { voidcall("uninstall"); }
 inline void UserTraversalFQDN::install(Variant _install_opts) { voidcall("install", _install_opts); }
-inline void UserTraversalFQDN::process_network_packet(PacketControlModule pktctl, Variant packet) { voidcall("process_network_packet", pktctl, packet); }
+inline bool UserTraversalFQDN::process_network_packet(PacketControlModule pktctl, Variant packet) { return operator()("process_network_packet", pktctl, packet); }
 
 #endif

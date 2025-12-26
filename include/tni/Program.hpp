@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_PROGRAM
 #define TNI_API_HEADER_PROGRAM
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.0
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <api.hpp>
@@ -29,6 +29,7 @@ struct Program : public Node {
 		ALLOW_DECENTRO_TRADING = 9,
 		ALLOW_VLAN_TAGGING = 10,
 		ALLOW_TRAFFIC_SPLITTING = 11,
+		ALLOW_STP_PORT_CONTROL = 12,
 	};
 
 	PROPERTY(cpu_load, int64_t);
@@ -52,7 +53,7 @@ struct Program : public Node {
 	inline void uninstall();
 	inline void install(Variant _install_opts);
 	inline void tick();
-	inline void process_network_packet(PacketControlModule pktctl, Variant packet);
+	inline bool process_network_packet(PacketControlModule pktctl, Variant packet);
 };
 
 #include "LogicController.hpp"
@@ -64,6 +65,6 @@ inline void Program::stop() { voidcall("stop"); }
 inline void Program::uninstall() { voidcall("uninstall"); }
 inline void Program::install(Variant _install_opts) { voidcall("install", _install_opts); }
 inline void Program::tick() { voidcall("tick"); }
-inline void Program::process_network_packet(PacketControlModule pktctl, Variant packet) { voidcall("process_network_packet", pktctl, packet); }
+inline bool Program::process_network_packet(PacketControlModule pktctl, Variant packet) { return operator()("process_network_packet", pktctl, packet); }
 
 #endif

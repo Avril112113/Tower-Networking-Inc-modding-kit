@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_USERTRAVERSAL
 #define TNI_API_HEADER_USERTRAVERSAL
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.0
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <api.hpp>
@@ -72,8 +72,10 @@ struct UserTraversal : public Node {
 	inline Variant get_compatible_hostings();
 	inline Variant filter_acceptable_hostings(Variant initial_candids);
 	inline void select_host_from_hostings(Variant acceptable_candidates, int64_t selection_method);
+	inline Variant make_traversal_packet(NetworkPacketRoot proot);
 	inline Variant produce_limit_reached(LogicController node);
 	inline Variant compute_produce_limit(LogicController node);
+	inline NetworkPacketRoot make_packet_root();
 	inline bool check_routability(LogicController from_node, LogicControllerSocket via_port, TraversalContext context);
 	inline Variant check_filter_passage(LogicController next_node, TraversalContext context);
 	inline bool check_traversibility(TraversalContext context, LogicController from_node, Variant via_port, Variant current_depth);
@@ -83,13 +85,14 @@ struct UserTraversal : public Node {
 	inline void stop();
 	inline void uninstall();
 	inline void install(Variant _install_opts);
-	inline void process_network_packet(PacketControlModule pktctl, Variant packet);
+	inline bool process_network_packet(PacketControlModule pktctl, Variant packet);
 };
 
 #include "LogicControllerUser.hpp"
 #include "ThemeConfig.hpp"
 #include "UseConfig.hpp"
 #include "LogicController.hpp"
+#include "NetworkPacketRoot.hpp"
 #include "LogicControllerSocket.hpp"
 #include "TraversalContext.hpp"
 #include "PacketControlModule.hpp"
@@ -99,8 +102,10 @@ inline void UserTraversal::add_surveyor_msg(String msg) { voidcall("add_surveyor
 inline Variant UserTraversal::get_compatible_hostings() { return operator()("get_compatible_hostings"); }
 inline Variant UserTraversal::filter_acceptable_hostings(Variant initial_candids) { return operator()("filter_acceptable_hostings", initial_candids); }
 inline void UserTraversal::select_host_from_hostings(Variant acceptable_candidates, int64_t selection_method) { voidcall("select_host_from_hostings", acceptable_candidates, selection_method); }
+inline Variant UserTraversal::make_traversal_packet(NetworkPacketRoot proot) { return operator()("make_traversal_packet", proot); }
 inline Variant UserTraversal::produce_limit_reached(LogicController node) { return operator()("produce_limit_reached", node); }
 inline Variant UserTraversal::compute_produce_limit(LogicController node) { return operator()("compute_produce_limit", node); }
+inline NetworkPacketRoot UserTraversal::make_packet_root() { return NetworkPacketRoot(operator()("make_packet_root").as_object().address()); }
 inline bool UserTraversal::check_routability(LogicController from_node, LogicControllerSocket via_port, TraversalContext context) { return operator()("check_routability", from_node, via_port, context); }
 inline Variant UserTraversal::check_filter_passage(LogicController next_node, TraversalContext context) { return operator()("check_filter_passage", next_node, context); }
 inline bool UserTraversal::check_traversibility(TraversalContext context, LogicController from_node, Variant via_port, Variant current_depth) { return operator()("check_traversibility", context, from_node, via_port, current_depth); }
@@ -110,6 +115,6 @@ inline void UserTraversal::start() { voidcall("start"); }
 inline void UserTraversal::stop() { voidcall("stop"); }
 inline void UserTraversal::uninstall() { voidcall("uninstall"); }
 inline void UserTraversal::install(Variant _install_opts) { voidcall("install", _install_opts); }
-inline void UserTraversal::process_network_packet(PacketControlModule pktctl, Variant packet) { voidcall("process_network_packet", pktctl, packet); }
+inline bool UserTraversal::process_network_packet(PacketControlModule pktctl, Variant packet) { return operator()("process_network_packet", pktctl, packet); }
 
 #endif

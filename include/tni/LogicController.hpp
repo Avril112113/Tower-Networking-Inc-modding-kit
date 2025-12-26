@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_LOGICCONTROLLER
 #define TNI_API_HEADER_LOGICCONTROLLER
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.0
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <api.hpp>
@@ -21,6 +21,7 @@ struct LogicController : public Node {
 		TRAFFIC_WEIGHT = 3,
 		REQUEST_DATA = 4,
 		ADDITIONAL_FLAGS = 5,
+		PORT_ID = 6,
 	};
 	enum TableType : int64_t {  // NOTE: You should recompile your mod if this enum changes!
 		ROUTING = 0,
@@ -74,6 +75,7 @@ struct LogicController : public Node {
 	PROPERTY(is_network_lb, bool);
 	PROPERTY(is_ha_enabled, bool);
 	PROPERTY(is_vlan_enabled, bool);
+	PROPERTY(is_stp_enabled, bool);
 	PROPERTY(is_dns_server, bool);
 	PROPERTY(is_dhcp_server, bool);
 	PROPERTY(is_network_tap, bool);
@@ -94,7 +96,6 @@ struct LogicController : public Node {
 	PROPERTY(free_nbw, int64_t);
 	PROPERTY(nbw_wasted_last_tick, int64_t);
 	PROPERTY(nbw_used_last_tick, int64_t);
-	PROPERTY(traversal_history_nbw, int64_t);
 	PROPERTY(traversal_history_last_tick_nbw, int64_t);
 	PROPERTY(pcap_history_marker, int64_t);
 	PROPERTY(pmodset, Variant);
@@ -105,7 +106,9 @@ struct LogicController : public Node {
 	PROPERTY(is_device_host, bool);
 	PROPERTY(installed_program_sfps, Variant);
 	PROPERTY(lbcounter, int64_t);
+	PROPERTY(logicport_add_count, int64_t);
 	PROPERTY(sorted_packet_processors, Variant);
+	PROPERTY(universal_print_name, String);
 	PROPERTY(ports, Variant);
 	PROPERTY(neighbours, Variant);
 	PROPERTY(reversed_ports, Variant);

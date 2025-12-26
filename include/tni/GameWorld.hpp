@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_GAMEWORLD
 #define TNI_API_HEADER_GAMEWORLD
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.0
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <api.hpp>
@@ -32,6 +32,7 @@ struct GameWorld : public Node2D {
 	PROPERTY(default_application_unlocks, Variant);
 	PROPERTY(netsh_default_always, bool);
 	PROPERTY(autosave_enabled, bool);
+	PROPERTY(consumer_goes_easy_due_to_producer_grace, bool);
 	PROPERTY(main_scon, SaveController);
 	PROPERTY(time_mult, double);
 	PROPERTY(dns_lookup, Variant);

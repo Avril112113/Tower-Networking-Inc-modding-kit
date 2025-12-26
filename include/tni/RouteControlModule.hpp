@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_ROUTECONTROLMODULE
 #define TNI_API_HEADER_ROUTECONTROLMODULE
-// Generated API for game version 0.9.1
+// Generated API for game version 0.10.0
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <api.hpp>
@@ -28,6 +28,9 @@ struct RouteControlModule : public Node {
 	PROPERTY(rip_advertise_paths, Variant);
 	PROPERTY(rip_enabled, bool);
 	PROPERTY(port_groups, Variant);
+	PROPERTY(ha_hb_timer, Timer);
+	PROPERTY(rip_hb_timer, Timer);
+	PROPERTY(parent_controller, LogicController);
 	PROPERTY(route_entries, Variant);
 	PROPERTY(routing_rules, Variant);
 	PROPERTY(host_controller, LogicController);
