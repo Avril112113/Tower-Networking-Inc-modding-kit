@@ -1,5 +1,5 @@
-export CC="riscv64-linux-gnu-gcc-12"
-export CXX="riscv64-linux-gnu-g++-12"
+export CC="riscv64-linux-gnu-gcc-14"
+export CXX="riscv64-linux-gnu-g++-14"
 
 mkdir -p .build
 pushd .build
