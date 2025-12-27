@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class TerminalRoutine : Node
 ---@field INVALID_CMD_MAN_HELP0 string # Constant value: invalid command, type '{man}' for help.
@@ -23,19 +23,6 @@ function TerminalRoutine.run_with_args(_stdout, _args) end
 ---@param _stdout TerminalOutputDisplay
 function TerminalRoutine.foreground_process(_stdout) end
 
----@param debugger_lgctl Object
----@param traffic_type Object
----@param request_data Object
----@return TraversalContext
-function TerminalRoutine.create_debugger_ctx(debugger_lgctl, traffic_type, request_data) end
-
----@param stdout Object
----@param debugger Object
----@param node_addr Object
----@param allow_user_nodes boolean?  # Default = false
----@return TraversalContext
-function TerminalRoutine.access_node_from_debugger(stdout, debugger, node_addr, allow_user_nodes) end
-
 ---@param stdout Object
 ---@param deb_addr string
 function TerminalRoutine.print_debugger_inacessible_error(stdout, deb_addr) end
@@ -54,6 +41,10 @@ function TerminalRoutine.print_invalid_device_type(stdout, dev_addr, req_type) e
 ---@param stdout Object
 ---@param dst_laddr Object
 function TerminalRoutine.print_no_dns_entry_error(stdout, dst_laddr) end
+
+---@param stdout Object
+---@param d_addr Object
+function TerminalRoutine.print_no_dns_server_error(stdout, d_addr) end
 
 ---@param context Object
 ---@param stdout Object
@@ -83,3 +74,21 @@ function TerminalRoutine.format_load_string(load_last_tick, max_load) end
 ---@param stdout Object
 ---@param p Program
 function TerminalRoutine.print_prog_load(stdout, p) end
+
+---@param stdout Object
+---@param async_send_resultd table<any,any>
+function TerminalRoutine.print_send_packet_error(stdout, async_send_resultd) end
+
+---@return integer
+function TerminalRoutine.get_debugger_pkt_weight() end
+
+---@param stdout Object
+---@param debugger DeviceUnit
+---@param node_addr string
+---@param allow_user_nodes boolean?  # Default = false
+---@param rc_tc_type string?  # Default = tcp/23
+---@param rc_tc_rd string?  # Default = debugger access
+---@param matcher_callback Object?  # Default = <null>
+---@param clear_scrn_after_event boolean?  # Default = false
+---@return Object
+function TerminalRoutine.send_remote_command(stdout, debugger, node_addr, allow_user_nodes, rc_tc_type, rc_tc_rd, matcher_callback, clear_scrn_after_event) end

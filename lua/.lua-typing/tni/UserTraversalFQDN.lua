@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class UserTraversalFQDN : Node
 ---@field manifest_probability number
@@ -53,6 +53,10 @@
 ---@field host_controller LogicController
 local UserTraversalFQDN = {}
 
+---@param proot NetworkPacketRoot
+---@return Object
+function UserTraversalFQDN.make_traversal_packet(proot) end
+
 function UserTraversalFQDN.tick() end
 
 function UserTraversalFQDN.tick() end
@@ -71,6 +75,10 @@ function UserTraversalFQDN.filter_acceptable_hostings(initial_candids) end
 ---@param selection_method UserTraversal.HostSelMethod
 function UserTraversalFQDN.select_host_from_hostings(acceptable_candidates, selection_method) end
 
+---@param proot NetworkPacketRoot
+---@return Object
+function UserTraversalFQDN.make_traversal_packet(proot) end
+
 ---@param node LogicController
 ---@return Object
 function UserTraversalFQDN.produce_limit_reached(node) end
@@ -78,6 +86,13 @@ function UserTraversalFQDN.produce_limit_reached(node) end
 ---@param node LogicController
 ---@return Object
 function UserTraversalFQDN.compute_produce_limit(node) end
+
+---@return NetworkPacketRoot
+function UserTraversalFQDN.make_packet_root() end
+
+---@param proot NetworkPacketRoot
+---@return Object
+function UserTraversalFQDN.make_traversal_packet(proot) end
 
 ---@param from_node LogicController
 ---@param via_port LogicControllerSocket
@@ -105,6 +120,13 @@ function UserTraversalFQDN.check_traversibility(context, from_node, via_port, cu
 ---@return GraphController.Traversal
 function UserTraversalFQDN.precallback_process(context, node, via_port, current_index, current_depth) end
 
+---@return NetworkPacketRoot
+function UserTraversalFQDN.make_packet_root() end
+
+---@param proot NetworkPacketRoot
+---@return Object
+function UserTraversalFQDN.make_traversal_packet(proot) end
+
 function UserTraversalFQDN.tick() end
 
 ---@param ds string
@@ -124,4 +146,5 @@ function UserTraversalFQDN.tick() end
 
 ---@param pktctl PacketControlModule
 ---@param packet table<any,any>
+---@return boolean
 function UserTraversalFQDN.process_network_packet(pktctl, packet) end

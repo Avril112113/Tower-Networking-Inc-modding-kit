@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class TutorialScenario : Node2D
 ---@field last_tutorial_name string
@@ -12,6 +12,7 @@
 ---@field default_application_unlocks Array<any>
 ---@field netsh_default_always boolean
 ---@field autosave_enabled boolean
+---@field consumer_goes_easy_due_to_producer_grace boolean
 ---@field main_scon SaveController
 ---@field time_mult number
 ---@field dns_lookup table<any,any>

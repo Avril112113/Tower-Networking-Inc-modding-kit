@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class DeviceUnit : RigidBody2D
 ---@field ZINDEX integer # Constant value: 200
@@ -93,7 +93,7 @@ DeviceUnit.MountType = {
 	["NA"] = 0,
 	["R500"] = 1,
 	["R930"] = 2,
-	["R550"] = 3,
+	["R630"] = 3,
 }
 
 function DeviceUnit.apply_autoconfig() end

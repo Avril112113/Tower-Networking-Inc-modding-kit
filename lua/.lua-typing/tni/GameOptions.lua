@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class GameOptions : VBoxContainer
 ---@field startcash_in Slider

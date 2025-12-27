@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class FileSystemControlModule : Node
 ---@field RESTRICTED_FILENAMES Array<any> # Constant value: ["on", "to", "rename", "using"]

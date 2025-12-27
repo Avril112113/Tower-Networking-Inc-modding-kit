@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class TraversalBase : Node
 ---@field traffic_class string
@@ -57,6 +57,13 @@ function TraversalBase.check_traversibility(context, from_node, via_port, curren
 ---@return GraphController.Traversal
 function TraversalBase.precallback_process(context, node, via_port, current_index, current_depth) end
 
+---@return NetworkPacketRoot
+function TraversalBase.make_packet_root() end
+
+---@param proot NetworkPacketRoot
+---@return Object
+function TraversalBase.make_traversal_packet(proot) end
+
 function TraversalBase.tick() end
 
 ---@param ds string
@@ -76,4 +83,5 @@ function TraversalBase.tick() end
 
 ---@param pktctl PacketControlModule
 ---@param packet table<any,any>
+---@return boolean
 function TraversalBase.process_network_packet(pktctl, packet) end

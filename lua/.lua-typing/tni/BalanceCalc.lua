@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class BalanceCalc : Object
 ---@field GLOBAL_USER_DAILY_RATE_MULTIPLIER number # Constant value: 1.3

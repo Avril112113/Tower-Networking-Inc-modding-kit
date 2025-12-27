@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@param classname "AESContext"
 ---@param param string
@@ -2054,6 +2054,11 @@ function create_node(classname, param) end
 ---@param classname "GDScriptWorkspace"
 ---@param param string
 ---@return GDScriptWorkspace
+function create_node(classname, param) end
+
+---@param classname "GDShaderSyntaxHighlighter"
+---@param param string
+---@return GDShaderSyntaxHighlighter
 function create_node(classname, param) end
 
 ---@param classname "GLTFAccessor"
@@ -4476,11 +4481,6 @@ function create_node(classname, param) end
 ---@return ShaderBakerExportPluginPlatform
 function create_node(classname, param) end
 
----@param classname "ShaderBakerExportPluginPlatformD3D12"
----@param param string
----@return ShaderBakerExportPluginPlatformD3D12
-function create_node(classname, param) end
-
 ---@param classname "ShaderBakerExportPluginPlatformVulkan"
 ---@param param string
 ---@return ShaderBakerExportPluginPlatformVulkan
@@ -4489,6 +4489,11 @@ function create_node(classname, param) end
 ---@param classname "ShaderCreateDialog"
 ---@param param string
 ---@return ShaderCreateDialog
+function create_node(classname, param) end
+
+---@param classname "ShaderEditor"
+---@param param string
+---@return ShaderEditor
 function create_node(classname, param) end
 
 ---@param classname "ShaderFileEditor"
@@ -4524,6 +4529,11 @@ function create_node(classname, param) end
 ---@param classname "ShaderMaterial"
 ---@param param string
 ---@return ShaderMaterial
+function create_node(classname, param) end
+
+---@param classname "ShaderTextEditor"
+---@param param string
+---@return ShaderTextEditor
 function create_node(classname, param) end
 
 ---@param classname "Shape2D"
@@ -4949,6 +4959,11 @@ function create_node(classname, param) end
 ---@param classname "TextServerManager"
 ---@param param string
 ---@return TextServerManager
+function create_node(classname, param) end
+
+---@param classname "TextShaderEditor"
+---@param param string
+---@return TextShaderEditor
 function create_node(classname, param) end
 
 ---@param classname "Texture"

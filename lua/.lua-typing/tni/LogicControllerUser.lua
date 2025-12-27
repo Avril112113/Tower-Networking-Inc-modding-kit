@@ -1,9 +1,11 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class LogicControllerUser : Node
 ---@field logic_controller LogicController
 ---@field behaviors Array<Program>
+---@field hosting_behaviors Array<Program>
+---@field public_client_behaviors Array<Program>
 ---@field user_application_unlocks Array<any>
 ---@field consumption_payment_scaling number
 ---@field allow_hwreset boolean
@@ -79,13 +81,13 @@ function LogicControllerUser.account_intent(utc) end
 function LogicControllerUser.unaccount_intent(utc) end
 
 ---@param utc UserTraversal
----@param _context TraversalContext
-function LogicControllerUser.account_consumption(utc, _context) end
+---@param _ctx_or_pkt Object
+function LogicControllerUser.account_consumption(utc, _ctx_or_pkt) end
 
 ---@param vprog Program
----@param context TraversalContext
+---@param ctx_or_pkt Object
 ---@param _visitor LogicControllerUser
-function LogicControllerUser.account_visitation(vprog, context, _visitor) end
+function LogicControllerUser.account_visitation(vprog, ctx_or_pkt, _visitor) end
 
 ---@param time_mult_delta number
 function LogicControllerUser.time_mult_updated(time_mult_delta) end

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class DecentroNode : Node
 ---@field decentro_currency_use_config UseConfig
@@ -62,4 +62,5 @@ function DecentroNode.tick() end
 
 ---@param pktctl PacketControlModule
 ---@param packet table<any,any>
+---@return boolean
 function DecentroNode.process_network_packet(pktctl, packet) end

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class ProceduralSkyMaterial : Material
 ---@field sky_top_color Color

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class TraversalHistoryProduce : Node
 ---@field require_user_traffic boolean
@@ -61,4 +61,5 @@ function TraversalHistoryProduce.tick() end
 
 ---@param pktctl PacketControlModule
 ---@param packet table<any,any>
+---@return boolean
 function TraversalHistoryProduce.process_network_packet(pktctl, packet) end

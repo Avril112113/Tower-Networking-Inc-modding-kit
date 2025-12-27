@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class TraversalContextRule : RefCounted
 ---@field RESTRICTED_WORDS Array<any> # Constant value: ["any", "to", "from", "on", "using", "traffic", "via", "*", "."]
@@ -17,3 +17,7 @@ local TraversalContextRule = {}
 ---@param context TraversalContext
 ---@return boolean
 function TraversalContextRule.is_matched(context) end
+
+---@param packet table<any,any>
+---@return boolean
+function TraversalContextRule.is_packet_matched(packet) end

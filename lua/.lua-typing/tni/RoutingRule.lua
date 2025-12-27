@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class RoutingRule : RefCounted
 ---@field key string
@@ -26,3 +26,7 @@ function RoutingRule.from_routing_table_entry(rt_entry) end
 ---@param context TraversalContext
 ---@return boolean
 function RoutingRule.is_matched(context) end
+
+---@param packet table<any,any>
+---@return boolean
+function RoutingRule.is_packet_matched(packet) end

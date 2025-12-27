@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class RouteControlModule : Node
 ---@field MAX_PORT_GROUPS integer # Constant value: 10
@@ -10,6 +10,9 @@
 ---@field rip_advertise_paths Array<any>
 ---@field rip_enabled boolean
 ---@field port_groups table<any,any>
+---@field ha_hb_timer Timer
+---@field rip_hb_timer Timer
+---@field parent_controller LogicController
 ---@field route_entries Array<any>
 ---@field routing_rules Array<any>
 ---@field host_controller LogicController

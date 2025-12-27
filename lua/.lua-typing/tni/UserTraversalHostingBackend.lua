@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class UserTraversalHostingBackend : Node
 ---@field user_hosting_frontend UserHosting
@@ -61,6 +61,10 @@ function UserTraversalHostingBackend.compute_produce_limit(_node) end
 
 function UserTraversalHostingBackend.tick() end
 
+---@param proot NetworkPacketRoot
+---@return Object
+function UserTraversalHostingBackend.make_traversal_packet(proot) end
+
 function UserTraversalHostingBackend.tick() end
 
 function UserTraversalHostingBackend.tick() end
@@ -79,6 +83,10 @@ function UserTraversalHostingBackend.filter_acceptable_hostings(initial_candids)
 ---@param selection_method UserTraversal.HostSelMethod
 function UserTraversalHostingBackend.select_host_from_hostings(acceptable_candidates, selection_method) end
 
+---@param proot NetworkPacketRoot
+---@return Object
+function UserTraversalHostingBackend.make_traversal_packet(proot) end
+
 ---@param node LogicController
 ---@return Object
 function UserTraversalHostingBackend.produce_limit_reached(node) end
@@ -86,6 +94,13 @@ function UserTraversalHostingBackend.produce_limit_reached(node) end
 ---@param node LogicController
 ---@return Object
 function UserTraversalHostingBackend.compute_produce_limit(node) end
+
+---@return NetworkPacketRoot
+function UserTraversalHostingBackend.make_packet_root() end
+
+---@param proot NetworkPacketRoot
+---@return Object
+function UserTraversalHostingBackend.make_traversal_packet(proot) end
 
 ---@param from_node LogicController
 ---@param via_port LogicControllerSocket
@@ -113,6 +128,13 @@ function UserTraversalHostingBackend.check_traversibility(context, from_node, vi
 ---@return GraphController.Traversal
 function UserTraversalHostingBackend.precallback_process(context, node, via_port, current_index, current_depth) end
 
+---@return NetworkPacketRoot
+function UserTraversalHostingBackend.make_packet_root() end
+
+---@param proot NetworkPacketRoot
+---@return Object
+function UserTraversalHostingBackend.make_traversal_packet(proot) end
+
 function UserTraversalHostingBackend.tick() end
 
 ---@param ds string
@@ -132,4 +154,5 @@ function UserTraversalHostingBackend.tick() end
 
 ---@param pktctl PacketControlModule
 ---@param packet table<any,any>
+---@return boolean
 function UserTraversalHostingBackend.process_network_packet(pktctl, packet) end

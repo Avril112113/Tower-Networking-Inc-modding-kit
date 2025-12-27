@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class WormBase : Node
 ---@field release_name_template string
@@ -25,6 +25,13 @@
 ---@field is_running boolean
 ---@field host_controller LogicController
 local WormBase = {}
+
+---@return NetworkPacketRoot
+function WormBase.make_packet_root() end
+
+---@param proot NetworkPacketRoot
+---@return Object
+function WormBase.make_traversal_packet(proot) end
 
 ---@param from_node LogicController
 ---@param via_port LogicControllerSocket
@@ -52,6 +59,13 @@ function WormBase.check_traversibility(context, from_node, via_port, current_dep
 ---@return GraphController.Traversal
 function WormBase.precallback_process(context, node, via_port, current_index, current_depth) end
 
+---@return NetworkPacketRoot
+function WormBase.make_packet_root() end
+
+---@param proot NetworkPacketRoot
+---@return Object
+function WormBase.make_traversal_packet(proot) end
+
 function WormBase.tick() end
 
 ---@param ds string
@@ -71,4 +85,5 @@ function WormBase.tick() end
 
 ---@param pktctl PacketControlModule
 ---@param packet table<any,any>
+---@return boolean
 function WormBase.process_network_packet(pktctl, packet) end

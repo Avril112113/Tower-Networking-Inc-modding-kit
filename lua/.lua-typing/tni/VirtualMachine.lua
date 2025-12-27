@@ -1,9 +1,9 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class VirtualMachine : Node
----@field LGCTLSCN string # Constant value: <PackedScene>
----@field VSSCN string # Constant value: <PackedScene>
+---@field LGCTLSCN Object # Constant value: <PackedScene#-9223369173638230611>
+---@field VSSCN Object # Constant value: <PackedScene#-9223369173453681258>
 ---@field vmname string
 ---@field virtual_machine_controller LogicController
 ---@field host_device DeviceUnit
@@ -71,4 +71,5 @@ function VirtualMachine.tick() end
 
 ---@param pktctl PacketControlModule
 ---@param packet table<any,any>
+---@return boolean
 function VirtualMachine.process_network_packet(pktctl, packet) end

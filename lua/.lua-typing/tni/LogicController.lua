@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class LogicController : Node
 ---@field default_tick_period number
@@ -49,6 +49,7 @@
 ---@field is_network_lb boolean
 ---@field is_ha_enabled boolean
 ---@field is_vlan_enabled boolean
+---@field is_stp_enabled boolean
 ---@field is_dns_server boolean
 ---@field is_dhcp_server boolean
 ---@field is_network_tap boolean
@@ -56,7 +57,7 @@
 ---@field installed_programs Array<Program>
 ---@field running_programs Array<Program>
 ---@field live_programs Array<Program>
----@field network_ports Array<LogicControllerSocket>
+---@field network_ports table<string,LogicControllerSocket>
 ---@field os_running boolean
 ---@field free_storage integer
 ---@field total_storage_capacity integer
@@ -69,7 +70,6 @@
 ---@field free_nbw integer
 ---@field nbw_wasted_last_tick integer
 ---@field nbw_used_last_tick integer
----@field traversal_history_nbw integer
 ---@field traversal_history_last_tick_nbw integer
 ---@field pcap_history_marker integer
 ---@field pmodset Array<any>
@@ -80,7 +80,9 @@
 ---@field is_device_host boolean
 ---@field installed_program_sfps Array<any>
 ---@field lbcounter integer
+---@field logicport_add_count integer
 ---@field sorted_packet_processors Array<any>
+---@field universal_print_name string
 ---@field ports Array<any>
 ---@field neighbours Array<any>
 ---@field reversed_ports Array<any>
@@ -93,6 +95,7 @@ LogicController.TraversalHistory = {
 	["TRAFFIC_WEIGHT"] = 3,
 	["REQUEST_DATA"] = 4,
 	["ADDITIONAL_FLAGS"] = 5,
+	["PORT_ID"] = 6,
 }
 ---@enum LogicController.TableType
 LogicController.TableType = {

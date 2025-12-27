@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class FirewallPolicy : RefCounted
 ---@field allow_policy boolean
@@ -34,6 +34,14 @@ function FirewallPolicy.will_deny(context) end
 ---@return boolean
 function FirewallPolicy.is_matched(context) end
 
+---@param packet table<any,any>
+---@return boolean
+function FirewallPolicy.is_packet_matched(packet) end
+
 ---@param context TraversalContext
 ---@return boolean
 function FirewallPolicy.is_matched(context) end
+
+---@param packet table<any,any>
+---@return boolean
+function FirewallPolicy.is_packet_matched(packet) end

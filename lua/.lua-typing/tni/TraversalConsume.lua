@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class TraversalConsume : Node
 ---@field produce_use_config UseConfig
@@ -56,6 +56,13 @@ function TraversalConsume.produce_limit_reached(node) end
 ---@return Object
 function TraversalConsume.compute_produce_limit(node) end
 
+---@return NetworkPacketRoot
+function TraversalConsume.make_packet_root() end
+
+---@param proot NetworkPacketRoot
+---@return Object
+function TraversalConsume.make_traversal_packet(proot) end
+
 ---@param from_node LogicController
 ---@param via_port LogicControllerSocket
 ---@param context TraversalContext
@@ -82,6 +89,13 @@ function TraversalConsume.check_traversibility(context, from_node, via_port, cur
 ---@return GraphController.Traversal
 function TraversalConsume.precallback_process(context, node, via_port, current_index, current_depth) end
 
+---@return NetworkPacketRoot
+function TraversalConsume.make_packet_root() end
+
+---@param proot NetworkPacketRoot
+---@return Object
+function TraversalConsume.make_traversal_packet(proot) end
+
 function TraversalConsume.tick() end
 
 ---@param ds string
@@ -101,4 +115,5 @@ function TraversalConsume.tick() end
 
 ---@param pktctl PacketControlModule
 ---@param packet table<any,any>
+---@return boolean
 function TraversalConsume.process_network_packet(pktctl, packet) end

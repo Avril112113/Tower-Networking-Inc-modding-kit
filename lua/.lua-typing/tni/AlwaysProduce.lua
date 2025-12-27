@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class AlwaysProduce : Node
 ---@field produce_use_config UseConfig
@@ -62,4 +62,5 @@ function AlwaysProduce.tick() end
 
 ---@param pktctl PacketControlModule
 ---@param packet table<any,any>
+---@return boolean
 function AlwaysProduce.process_network_packet(pktctl, packet) end

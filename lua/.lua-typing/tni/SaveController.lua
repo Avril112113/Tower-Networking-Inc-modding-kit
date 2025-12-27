@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class SaveController : Node
 ---@field EXPORT_SAVE_CALLBACK_FUNCNAME string # Constant value: _on_save_export

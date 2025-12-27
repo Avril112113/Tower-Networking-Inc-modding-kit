@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class Mod : Sandbox
 ---@field mod_entry_binary string
@@ -29,7 +29,6 @@ function Mod.callable_args_to_array(c) end
 function Mod.array_value_allowed(array, idx) end
 
 ---@param id integer
----@return Object
 function Mod.instance_from_id_(id) end
 
 ---@param e Error

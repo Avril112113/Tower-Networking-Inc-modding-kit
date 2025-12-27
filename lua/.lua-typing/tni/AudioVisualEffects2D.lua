@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class AudioVisualEffects2D : Node2D
 ---@field effects_group AudioVisualEffects2D.EffectsGroup

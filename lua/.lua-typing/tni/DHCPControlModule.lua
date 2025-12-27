@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class DHCPControlModule : Node
 ---@field option_dns Array<any>
@@ -26,7 +26,7 @@ function DHCPControlModule.clear_all_options() end
 function DHCPControlModule.get_save_var_list() end
 
 ---@param netctl NetworkControlModule
----@return Object
+---@return table<any,any>
 function DHCPControlModule.configure(netctl) end
 
 ---@return string

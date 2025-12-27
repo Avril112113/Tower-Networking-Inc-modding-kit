@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class ModLua : Sandbox
 ---@field lua_entry_file string
@@ -30,7 +30,6 @@ function ModLua.callable_args_to_array(c) end
 function ModLua.array_value_allowed(array, idx) end
 
 ---@param id integer
----@return Object
 function ModLua.instance_from_id_(id) end
 
 ---@param e Error

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class UserTraversalP2P : Node
 ---@field p2p_method UserTraversalP2P.P2PMethod
@@ -59,6 +59,8 @@ UserTraversalP2P.P2PMethod = {
 
 function UserTraversalP2P.tick() end
 
+function UserTraversalP2P.tick() end
+
 ---@param msg string
 function UserTraversalP2P.add_surveyor_msg(msg) end
 
@@ -73,6 +75,10 @@ function UserTraversalP2P.filter_acceptable_hostings(initial_candids) end
 ---@param selection_method UserTraversal.HostSelMethod
 function UserTraversalP2P.select_host_from_hostings(acceptable_candidates, selection_method) end
 
+---@param proot NetworkPacketRoot
+---@return Object
+function UserTraversalP2P.make_traversal_packet(proot) end
+
 ---@param node LogicController
 ---@return Object
 function UserTraversalP2P.produce_limit_reached(node) end
@@ -80,6 +86,13 @@ function UserTraversalP2P.produce_limit_reached(node) end
 ---@param node LogicController
 ---@return Object
 function UserTraversalP2P.compute_produce_limit(node) end
+
+---@return NetworkPacketRoot
+function UserTraversalP2P.make_packet_root() end
+
+---@param proot NetworkPacketRoot
+---@return Object
+function UserTraversalP2P.make_traversal_packet(proot) end
 
 ---@param from_node LogicController
 ---@param via_port LogicControllerSocket
@@ -107,6 +120,13 @@ function UserTraversalP2P.check_traversibility(context, from_node, via_port, cur
 ---@return GraphController.Traversal
 function UserTraversalP2P.precallback_process(context, node, via_port, current_index, current_depth) end
 
+---@return NetworkPacketRoot
+function UserTraversalP2P.make_packet_root() end
+
+---@param proot NetworkPacketRoot
+---@return Object
+function UserTraversalP2P.make_traversal_packet(proot) end
+
 function UserTraversalP2P.tick() end
 
 ---@param ds string
@@ -126,4 +146,5 @@ function UserTraversalP2P.tick() end
 
 ---@param pktctl PacketControlModule
 ---@param packet table<any,any>
+---@return boolean
 function UserTraversalP2P.process_network_packet(pktctl, packet) end

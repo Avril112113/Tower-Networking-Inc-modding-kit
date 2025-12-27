@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class GameSession : Node
 ---@field MAX_BGM_HEAT integer # Constant value: 3

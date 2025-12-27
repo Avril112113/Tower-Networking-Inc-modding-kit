@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.9.1
+-- Generated API for game version 0.10.0
 
 ---@class DevicePlacer : Node2D
 ---@field MIN_HEIGHT_PER_DEVICE number # Constant value: 100.0
