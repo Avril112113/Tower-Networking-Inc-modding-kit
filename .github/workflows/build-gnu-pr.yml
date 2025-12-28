@@ -4,8 +4,8 @@ on:
   pull_request:
     branches: [ "**" ]
     paths-ignore:
-      - ./lua
-      - ./*.md
+      - "lua/"
+      - "*.md"
 
 jobs:
   build:
