@@ -3,6 +3,6 @@ export CXX="riscv64-linux-gnu-g++-14"
 
 mkdir -p .build
 pushd .build
-cmake -DCMAKE_C_COMPILER=$CC -DCMAKE_CXX_COMPILER=$CXX .. -DCMAKE_BUILD_TYPE=RelWithDebInfo -DSTRIPPED=OFF
-make -j
+cmake .. -G Ninja -DCMAKE_COLOR_DIAGNOSTICS=ON -DCMAKE_C_COMPILER=$CC -DCMAKE_CXX_COMPILER=$CXX -DCMAKE_BUILD_TYPE=RelWithDebInfo -DSTRIPPED=OFF
+cmake --build . -j
 popd
