@@ -1,6 +1,7 @@
 #include <lua.hpp>
 
 #include "gdobject.hpp"
+#include "gdpropertyproxy.hpp"
 #include "utils.hpp"
 #include "tower.hpp"
 
@@ -59,7 +60,12 @@ void push_gd_object_metatable(lua_State *L) {
                 // TODO: We could temporarily cache GDCallable userdata during this VM call.
                 // TODO: GDNameCall instead of GDCallable to handle `obj:method()`, which can bypass GDCallable using obj.call/obj.callv (more performant and Lua idiomatic)
                 
-                return push_gd_variant(L, obj.get(name));
+                Variant value = obj.get(name);
+                switch (value.get_type()) {
+                    case Variant::Type::VECTOR2:
+                        return push_gd_propertyproxy(L, obj, name);
+                }
+                return push_gd_variant(L, value);
             }
             lua_pushnil(L);
             return 1;
