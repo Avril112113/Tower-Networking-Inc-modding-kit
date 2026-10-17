@@ -7,10 +7,10 @@
 
 #include "tower.hpp"
 #include "utils.hpp"
+#include "luamodpackage.hpp"
 #include "gdobject.hpp"
 #include "gdarray.hpp"
 #include "gdcallable.hpp"
-#include "luamodpackage.hpp"
 #include "gddictionary.hpp"
 
 

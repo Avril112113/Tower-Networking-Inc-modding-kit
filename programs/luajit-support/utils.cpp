@@ -14,6 +14,7 @@
 int variant_self_call(lua_State *L) {
     // FIXME: There is no way to know with `v.callp` if the method actually exist or not...
     //        Can we find a way?
+    //        We've currently resorted to each caller checking if the method exists before calling this function.
 
     // Stack: Variant, args...
     if (lua_type(L, 1) != LUA_TUSERDATA) {
@@ -194,6 +195,8 @@ void print_lua_stack(lua_State *L) {
                     printf("\tGDCallable: %d @ %p", ud->get_variant_index(), ud);
                 if (Array* ud = test_gdarray(L, i))
                     printf("\tGDArray: %d @ %p", ud->get_variant_index(), ud);
+                if (Dictionary* ud = test_gddictionary(L, i))
+                    printf("\tGDDictionary: %d @ %p", ud->get_variant_index(), ud);
                 printf("\n");
                 break;
             default:
