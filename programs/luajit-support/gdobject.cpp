@@ -22,13 +22,13 @@ Object test_gdobject(lua_State *L, int pos) {
     return v.as_object();
 }
 int push_gd_object(lua_State *L, Object object) {
-    if (object.address() == 0) {
+    if (!object.is_valid()) {
         lua_pushnil(L);
         return 1;
     }
 
     uint64_t* ud = (uint64_t*)lua_newuserdata(L, sizeof(uint64_t));
-    *ud = uint64_t(object("get_instance_id"));  // object.get_instance_id() wrongly returns int
+    *ud = object.get_instance_id();
 
     push_gd_object_metatable(L);
     lua_setmetatable(L, -2);
@@ -83,7 +83,7 @@ void push_gd_object_metatable(lua_State *L) {
 
         lua_pushstring(L, "__tostring");
         lua_pushcfunction(L, [](lua_State *L) -> int {
-            Object obj = test_gdobject(L, 1);
+            Object obj = check_gdobject(L, 1);
             if (!obj.is_valid()) {
                 lua_pushfstring(L, "GDObject: INVALID");
             } else {
@@ -96,7 +96,7 @@ void push_gd_object_metatable(lua_State *L) {
 
         lua_pushstring(L, "__gc");
         lua_pushcfunction(L, [](lua_State *L) -> int {
-            Object obj = test_gdobject(L, 1);
+            Object obj = check_gdobject(L, 1);
             if (obj.is_class("RefCounted")) {
                 obj("unreference");
             }
