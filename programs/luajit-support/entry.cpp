@@ -12,6 +12,7 @@
 #include "gdarray.hpp"
 #include "gdcallable.hpp"
 #include "gddictionary.hpp"
+#include "gdvector2.hpp"
 
 
 EXTERN_SYSCALL(uint64_t, sys_node_create, Node_Create_Shortlist, const char *, size_t, const char *, size_t);
@@ -124,6 +125,9 @@ static void setup_lua_state() {
 
     push_gd_callable_metatable(L);
     lua_setglobal(L, "Callable");
+
+    push_gd_vector2_metatable(L);
+    lua_setglobal(L, "Vector2");
 
     lua_pushcfunction(L, [](lua_State *L) -> int {
         std::string classname = luaL_checkstring(L, 1);
