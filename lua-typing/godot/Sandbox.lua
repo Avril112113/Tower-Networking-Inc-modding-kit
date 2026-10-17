@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.3
 
 ---@class Sandbox : Node
 ---@field references_max integer
@@ -53,6 +53,9 @@ function Sandbox.remove_allowed_object(instance) end
 ---@param name string
 ---@return boolean
 function Sandbox.is_allowed_class(name) end
+
+---@return boolean
+function Sandbox.is_class_access_restricted() end
 
 ---@param instance Object
 ---@return boolean
@@ -134,7 +137,7 @@ function Sandbox.get_coroutine_count() end
 
 function Sandbox.reap_coroutines() end
 
----@param max integer?  # Default = 20
+---@param max integer?  # Default = 32
 function Sandbox.set_memory_max(max) end
 
 ---@return integer
@@ -163,6 +166,9 @@ function Sandbox.set_precise_simulation(precise_simulation) end
 
 ---@return boolean
 function Sandbox.get_precise_simulation() end
+
+---@return boolean
+function Sandbox.get_unchecked_memory() end
 
 ---@param enable boolean?  # Default = false
 function Sandbox.set_profiling(enable) end

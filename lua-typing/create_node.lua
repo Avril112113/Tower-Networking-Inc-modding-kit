@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.3
 
 ---@param classname "AESContext"
 ---@param param string
@@ -279,11 +279,6 @@ function create_node(classname, param) end
 ---@param classname "ArrayOccluder3D"
 ---@param param string
 ---@return ArrayOccluder3D
-function create_node(classname, param) end
-
----@param classname "ArrayPanelContainer"
----@param param string
----@return ArrayPanelContainer
 function create_node(classname, param) end
 
 ---@param classname "AspectRatioContainer"
@@ -826,11 +821,6 @@ function create_node(classname, param) end
 ---@return CanvasItemEditor
 function create_node(classname, param) end
 
----@param classname "CanvasItemEditorSelectedItem"
----@param param string
----@return CanvasItemEditorSelectedItem
-function create_node(classname, param) end
-
 ---@param classname "CanvasItemEditorViewport"
 ---@param param string
 ---@return CanvasItemEditorViewport
@@ -1129,11 +1119,6 @@ function create_node(classname, param) end
 ---@param classname "ControlEditorToolbar"
 ---@param param string
 ---@return ControlEditorToolbar
-function create_node(classname, param) end
-
----@param classname "ControlPositioningWarning"
----@param param string
----@return ControlPositioningWarning
 function create_node(classname, param) end
 
 ---@param classname "ConvertTransformModifier3D"
@@ -1496,11 +1481,6 @@ function create_node(classname, param) end
 ---@return EditorHelpBit
 function create_node(classname, param) end
 
----@param classname "EditorHelpBitTooltip"
----@param param string
----@return EditorHelpBitTooltip
-function create_node(classname, param) end
-
 ---@param classname "EditorHelpSearch"
 ---@param param string
 ---@return EditorHelpSearch
@@ -1611,19 +1591,9 @@ function create_node(classname, param) end
 ---@return EditorProperty
 function create_node(classname, param) end
 
----@param classname "EditorPropertyArrayObject"
----@param param string
----@return EditorPropertyArrayObject
-function create_node(classname, param) end
-
 ---@param classname "EditorPropertyDictionaryObject"
 ---@param param string
 ---@return EditorPropertyDictionaryObject
-function create_node(classname, param) end
-
----@param classname "EditorPropertyLayersGrid"
----@param param string
----@return EditorPropertyLayersGrid
 function create_node(classname, param) end
 
 ---@param classname "EditorPropertyNameProcessor"
@@ -1776,11 +1746,6 @@ function create_node(classname, param) end
 ---@return EditorVariantTypeOptionButton
 function create_node(classname, param) end
 
----@param classname "EditorVariantTypePopupMenu"
----@param param string
----@return EditorVariantTypePopupMenu
-function create_node(classname, param) end
-
 ---@param classname "EditorVersionButton"
 ---@param param string
 ---@return EditorVersionButton
@@ -1871,19 +1836,9 @@ function create_node(classname, param) end
 ---@return FindBar
 function create_node(classname, param) end
 
----@param classname "FindInFiles"
----@param param string
----@return FindInFiles
-function create_node(classname, param) end
-
 ---@param classname "FindInFilesDialog"
 ---@param param string
 ---@return FindInFilesDialog
-function create_node(classname, param) end
-
----@param classname "FindInFilesPanel"
----@param param string
----@return FindInFilesPanel
 function create_node(classname, param) end
 
 ---@param classname "FindReplaceBar"

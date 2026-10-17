@@ -1,6 +1,6 @@
 #ifndef TNI_API_HEADER_MODFILEACCESS
 #define TNI_API_HEADER_MODFILEACCESS
-// Generated API for game version 0.12.1
+// Generated API for game version 0.13.3
 // If any constants or enum's change between versions, a rebuild of your mod with updated headers may be required!
 
 #include <generated_api.hpp>
@@ -48,7 +48,6 @@ struct ModFileAccess : public RefCounted {
 	inline bool store_pascal_string(String string);
 	inline bool store_real(double value);
 	inline bool store_string(String string);
-	inline bool store_var(Variant value, bool full_objects);
 };
 
 
@@ -84,6 +83,5 @@ inline bool ModFileAccess::store_line(String line) { return this->operator()("st
 inline bool ModFileAccess::store_pascal_string(String string) { return this->operator()("store_pascal_string", string); }
 inline bool ModFileAccess::store_real(double value) { return this->operator()("store_real", value); }
 inline bool ModFileAccess::store_string(String string) { return this->operator()("store_string", string); }
-inline bool ModFileAccess::store_var(Variant value, bool full_objects) { return this->operator()("store_var", value, full_objects); }
 
 #endif

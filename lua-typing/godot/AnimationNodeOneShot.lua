@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.3
 
 ---@class AnimationNodeOneShot : AnimationNodeSync
 ---@field mix_mode integer

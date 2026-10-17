@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.3
 
 ---@class AudioEffectPhaser : AudioEffect
 ---@field range_min_hz number

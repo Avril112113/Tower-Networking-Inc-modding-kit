@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.3
 
 ---@class Image : Resource
 ---@field data table<any,any>
@@ -100,13 +100,6 @@ function Image.load(path) end
 ---@param path string
 ---@return Image
 function Image.load_from_file(path) end
-
----@param path string
----@return Error
-function Image.save_dds(path) end
-
----@return PackedByteArray
-function Image.save_dds_to_buffer() end
 
 ---@return Image.AlphaMode
 function Image.detect_alpha() end

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.3
 
 ---@class CoreGameSettings : BaseSettings
 ---@field mouse_pan_speed number
@@ -12,6 +12,7 @@
 ---@field autosave_freq_min number
 ---@field autosave_retention integer
 ---@field perf_phy_sim_mode integer
+---@field perf_phy_sim_level res://scenes/core/game_settings.gd.PhySimLevel
 ---@field perf_cable_sim_mode integer
 ---@field show_announcements boolean
 ---@field shift_panning_enabled boolean
@@ -25,12 +26,17 @@
 ---@field show_help_guides boolean
 ---@field player_set_name string
 ---@field show_packet_animations boolean
+---@field packet_animation_style string
+---@field default_user_dhcp string
+---@field default_device_dhcp string
 ---@field addr_copy_mode integer
 ---@field last_sel_diffindex integer
 ---@field has_shown_difficulty_sel boolean
 ---@field cmd_alias table<any,any>
 ---@field floor_unlocks table<any,any>
 ---@field user_stampbook table<any,any>
+---@field wiki_favorites table<any,any>
+---@field lighting_presets Array<any>
 ---@field keybindings table<any,any>
 ---@field fullscreen_mode boolean
 ---@field vsync integer
@@ -41,6 +47,12 @@
 ---@field sfx_volume_linear number
 ---@field max_fps integer
 local CoreGameSettings = {}
+---@enum CoreGameSettings.PhySimLevel
+CoreGameSettings.PhySimLevel = {
+	["LOW"] = 0,
+	["NORMAL"] = 1,
+	["HIGH"] = 2,
+}
 
 function CoreGameSettings.apply() end
 

@@ -1,5 +1,5 @@
 ---@meta _
--- Generated API for game version 0.12.1
+-- Generated API for game version 0.13.3
 
 ---@class ModFileAccess : RefCounted
 local ModFileAccess = {}
@@ -115,8 +115,3 @@ function ModFileAccess.store_real(value) end
 ---@param string string
 ---@return boolean
 function ModFileAccess.store_string(string) end
-
----@param value Object
----@param full_objects boolean?  # Default = false
----@return boolean
-function ModFileAccess.store_var(value, full_objects) end
